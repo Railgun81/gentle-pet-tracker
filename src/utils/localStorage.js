@@ -1,9 +1,7 @@
 
-import { Pet } from '../types/Pet';
-
 const STORAGE_KEY = 'pet-manager-pets';
 
-export const getPetsFromStorage = (): Pet[] => {
+export const getPetsFromStorage = () => {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : [];
@@ -13,7 +11,7 @@ export const getPetsFromStorage = (): Pet[] => {
   }
 };
 
-export const savePetsToStorage = (pets: Pet[]): void => {
+export const savePetsToStorage = (pets) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(pets));
   } catch (error) {
@@ -21,7 +19,7 @@ export const savePetsToStorage = (pets: Pet[]): void => {
   }
 };
 
-export const clearPetsFromStorage = (): void => {
+export const clearPetsFromStorage = () => {
   try {
     localStorage.removeItem(STORAGE_KEY);
   } catch (error) {

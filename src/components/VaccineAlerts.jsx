@@ -1,14 +1,9 @@
 
 import React from 'react';
-import { Pet } from '../types/Pet';
 import { AlertTriangle, Calendar } from 'lucide-react';
 
-interface VaccineAlertsProps {
-  pets: Pet[];
-}
-
-export const VaccineAlerts: React.FC<VaccineAlertsProps> = ({ pets }) => {
-  const formatDate = (dateString: string) => {
+export const VaccineAlerts = ({ pets }) => {
+  const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('es-ES', {
       weekday: 'long',
       year: 'numeric',

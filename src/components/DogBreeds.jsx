@@ -3,27 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { getDogBreeds } from '../services/dogApi';
 import { Loader2, Dog, Heart } from 'lucide-react';
 
-interface DogBreed {
-  id: number;
-  name: string;
-  temperament?: string;
-  life_span?: string;
-  weight?: {
-    metric?: string;
-  };
-  height?: {
-    metric?: string;
-  };
-  bred_for?: string;
-  image?: {
-    url: string;
-  };
-}
-
-export const DogBreeds: React.FC = () => {
-  const [breeds, setBreeds] = useState<DogBreed[]>([]);
+export const DogBreeds = () => {
+  const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchBreeds = async () => {

@@ -1,22 +1,15 @@
 
 import React from 'react';
-import { Pet } from '../types/Pet';
 import { Edit, Trash2, Calendar, Weight, Palette } from 'lucide-react';
 
-interface PetCardProps {
-  pet: Pet;
-  onEdit: (pet: Pet) => void;
-  onDelete: (id: string) => void;
-}
-
-export const PetCard: React.FC<PetCardProps> = ({ pet, onEdit, onDelete }) => {
+export const PetCard = ({ pet, onEdit, onDelete }) => {
   const handleDelete = () => {
     if (window.confirm(`¿Estás seguro de que quieres eliminar a ${pet.name}?`)) {
       onDelete(pet.id);
     }
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',

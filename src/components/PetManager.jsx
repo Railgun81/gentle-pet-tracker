@@ -4,13 +4,12 @@ import { PetForm } from './PetForm';
 import { PetList } from './PetList';
 import { VaccineAlerts } from './VaccineAlerts';
 import { DogBreeds } from './DogBreeds';
-import { Pet } from '../types/Pet';
 import { getPetsFromStorage, savePetsToStorage } from '../utils/localStorage';
 import { Heart, PawPrint } from 'lucide-react';
 
 const PetManager = () => {
-  const [pets, setPets] = useState<Pet[]>([]);
-  const [editingPet, setEditingPet] = useState<Pet | null>(null);
+  const [pets, setPets] = useState([]);
+  const [editingPet, setEditingPet] = useState(null);
   const [activeTab, setActiveTab] = useState('pets');
 
   useEffect(() => {
@@ -22,24 +21,24 @@ const PetManager = () => {
     savePetsToStorage(pets);
   }, [pets]);
 
-  const addPet = (pet: Omit<Pet, 'id'>) => {
-    const newPet: Pet = {
+  const addPet = (pet) => {
+    const newPet = {
       ...pet,
       id: Date.now().toString(),
     };
     setPets([...pets, newPet]);
   };
 
-  const updatePet = (updatedPet: Pet) => {
+  const updatePet = (updatedPet) => {
     setPets(pets.map(pet => pet.id === updatedPet.id ? updatedPet : pet));
     setEditingPet(null);
   };
 
-  const deletePet = (id: string) => {
+  const deletePet = (id) => {
     setPets(pets.filter(pet => pet.id !== id));
   };
 
-  const handleEdit = (pet: Pet) => {
+  const handleEdit = (pet) => {
     setEditingPet(pet);
     setActiveTab('pets');
   };

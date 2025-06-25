@@ -1,16 +1,9 @@
 
 import React from 'react';
 import { PetCard } from './PetCard';
-import { Pet } from '../types/Pet';
 import { PawPrint } from 'lucide-react';
 
-interface PetListProps {
-  pets: Pet[];
-  onEdit: (pet: Pet) => void;
-  onDelete: (id: string) => void;
-}
-
-export const PetList: React.FC<PetListProps> = ({ pets, onEdit, onDelete }) => {
+export const PetList = ({ pets, onEdit, onDelete }) => {
   if (pets.length === 0) {
     return (
       <div className="bg-white rounded-xl shadow-lg p-8 text-center">
